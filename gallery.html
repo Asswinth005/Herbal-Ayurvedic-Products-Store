@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery · Ayurveda | Ayurvedic Wellness Visual Journey</title>
+    <!-- Custom Favicon – Herbal leaf -->
+    <link rel="icon" type="image/svg+xml" href="assest/favicon.svg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        herb: '#4A7C59',
+                        clay: '#C27A4A',
+                        sand: '#E8DCC4',
+                        soil: '#5C4B3A',
+                        cream: '#F9F5ED',
+                        dusk: '#6D6875',
+                    },
+                    fontFamily: {
+                        'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+                        'body': ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'spin-slow': 'spinSlow 12s linear infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'herb-spin': 'herbSpin 4s ease-in-out infinite',
+                        'gallery-zoom': 'galleryZoom 8s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+                        slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        herbSpin: { '0%': { transform: 'rotate(0deg) scale(1)' }, '50%': { transform: 'rotate(10deg) scale(1.05)' }, '100%': { transform: 'rotate(0deg) scale(1)' } },
+                        galleryZoom: { '0%': { transform: 'scale(1)' }, '100%': { transform: 'scale(1.05)' } },
+                    },
+                    backgroundImage: {
+                        'herb-pattern': "radial-gradient(circle at 20% 30%, rgba(74, 124, 89, 0.06) 0%, transparent 70%)",
+                        'leaf-texture': "url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M30 10 L35 25 L50 30 L35 40 L38 55 L30 45 L22 55 L25 40 L10 30 L25 25 Z%22 fill=%22rgba(74,124,89,0.03)%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #F9F5ED;
+            color: #5C4B3A;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .dark body {
+            background-color: #1A1A1A;
+            color: #F4F1DE;
+        }
+        .dark .text-soil { color: #E8DCC4; }
+        .dark .text-dusk { color: #9CA3AF; }
+        .dark nav {
+            background-color: rgba(18, 18, 18, 0.96) !important;
+            border-color: rgba(74, 124, 89, 0.25) !important;
+        }
+        .dark section.bg-white,
+        .dark section[class*="bg-white"],
+        .dark section.dark\:bg-\[\#2D2A3A\] {
+            background-color: #121212 !important;
+        }
+
+        body::-webkit-scrollbar { width: 6px; }
+        body::-webkit-scrollbar-track { background: #E8DCC4; border-radius: 10px; }
+        body::-webkit-scrollbar-thumb { background: #4A7C59; border-radius: 10px; }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(74, 124, 89, 0.08);
+        }
+        .dark .gallery-item {
+            border-color: rgba(74, 124, 89, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(74, 124, 89, 0.25);
+            border-color: #4A7C59;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(74, 124, 89, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay h3 {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay h3 {
+            transform: translateY(0);
+        }
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.8rem;
+            transform: translateY(10px);
+            transition: transform 0.4s ease 0.05s;
+        }
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background-color: #4A7C59;
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(74, 124, 89, 0.35);
+        }
+        .btn-primary:hover {
+            background-color: #3A6548;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 124, 89, 0.45);
+        }
+        .btn-outline {
+            border: 1.5px solid #4A7C59;
+            color: #4A7C59;
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            background-color: #4A7C59;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background-color: #4A7C59;
+            transition: width 0.25s ease;
+            border-radius: 3px;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-herb {
+            position: relative;
+        }
+        .dropdown-herb-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 210px;
+            background: white;
+            border-radius: 18px;
+            padding: 0.6rem 0;
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.25s ease;
+            z-index: 1000;
+            border: 1px solid rgba(74, 124, 89, 0.2);
+        }
+        .dark .dropdown-herb-menu {
+            background: #1E1E1E;
+            border-color: rgba(74, 124, 89, 0.4);
+        }
+        .dropdown-herb:hover .dropdown-herb-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 1.4rem;
+            transition: all 0.2s;
+            color: #5C4B3A;
+        }
+        .dark .dropdown-item {
+            color: #F4F1DE;
+        }
+        .dropdown-item:hover {
+            background-color: #F9F5ED;
+            color: #4A7C59;
+            padding-left: 1.7rem;
+        }
+        .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        .mobile-menu-herb {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 24px 24px;
+        }
+        .dark .mobile-menu-herb {
+            background: #121212;
+        }
+        .mobile-menu-herb.open {
+            max-height: 80vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .mobile-menu-herb.open::-webkit-scrollbar {
+            display: none;
+        }
+
+        .social-icon-herb {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F9F5ED;
+            color: #4A7C59;
+            transition: all 0.3s;
+        }
+        .social-icon-herb:hover {
+            background-color: #4A7C59;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .dark .social-icon-herb {
+            background-color: #6D6875;
+            color: #F4F1DE;
+        }
+        .dark .social-icon-herb:hover {
+            background-color: #4A7C59;
+            color: #121212;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            background: rgba(74, 124, 89, 0.10);
+            color: #4A7C59;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            border: 1px solid rgba(74, 124, 89, 0.12);
+        }
+        .dark .gallery-tag {
+            background: rgba(74, 124, 89, 0.18);
+            color: #8BB99C;
+        }
+
+        [dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+        [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+        [dir="rtl"] .ml-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+        html[dir="rtl"] .dropdown-herb-menu { left: auto; right: 0; }
+        html[dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+        html[dir="rtl"] .dropdown-item:hover { padding-left: 1.4rem; padding-right: 1.7rem; }
+    </style>
+</head>
+<body class="herb-pattern leaf-texture">
+
+    <!-- ====== NAVIGATION (exactly same as home page) ====== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#2D2A3A]/95 backdrop-blur-md border-b border-sand dark:border-dusk/30 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+                <!-- Logo -->
+                <a class='flex items-center gap-2 md:gap-3 group shrink-0' href='index.html'>
+                    <div class="w-9 h-9 md:w-10 md:h-10 bg-herb rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300">
+                        <i class="fas fa-leaf text-white text-base md:text-lg animate-herb-spin"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg md:text-2xl font-display font-bold tracking-tight text-soil dark:text-white">AYURVEDA</span>
+                    </div>
+                </a>
+
+                <div class="flex items-center gap-3 lg:gap-4 xl:gap-8 ml-auto rtl:ml-0 rtl:mr-auto">
+                    <!-- Desktop nav -->
+                    <div class="hidden lg:flex items-center gap-3 xl:gap-6">
+                        <div class="dropdown-herb">
+                            <button class="nav-link text-soil dark:text-gray-200 hover:text-herb transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                                Home <i class="fas fa-chevron-down text-xs ml-1"></i>
+                            </button>
+                            <div class="dropdown-herb-menu">
+                                <a class="dropdown-item" href="index.html"> Home 1</a>
+                                <a class="dropdown-item" href="home2.html"> Home 2</a>
+                            </div>
+                        </div>
+                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
+                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="glossary.html">Glossary</a>
+                        <a class="nav-link text-herb font-bold transition whitespace-nowrap text-sm xl:text-base" href="gallery.html">Gallery</a>
+                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="book.html">Book Consultation</a>
+                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+                    </div>
+
+                    <!-- Desktop actions -->
+                    <div class="hidden lg:flex items-center gap-4 ml-2">
+                        <div class="dropdown-herb">
+                            <button class="w-10 h-10 rounded-full bg-herb/10 text-herb hover:bg-herb hover:text-white transition flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <div class="dropdown-herb-menu" style="left: auto; right: 0;">
+                                <a class="dropdown-item" href="login.html">Log in</a>
+                                <a class="dropdown-item" href="signup.html">Sign Up</a>
+                            </div>
+                        </div>
+                        <button id="theme-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline"></i>
+                        </button>
+                        <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center font-bold text-base" title="Toggle RTL/LTR">⇄</button>
+                    </div>
+
+                    <!-- Mobile toggle -->
+                    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-herb text-white flex items-center justify-center shadow-md">
+                        <i class="fas fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu-herb lg:hidden">
+                <div class="py-4 px-3 space-y-1">
+                    <div class="py-1">
+                        <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition cursor-pointer">
+                            <span>Home</span>
+                            <i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+                        </button>
+                        <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+                            <a class="block py-2.5 px-4 font-medium text-herb bg-herb/5 border-l-4 border-herb rounded-xl transition" href="index.html"><i class="fas fa-leaf w-6 text-herb"></i> Home 1</a>
+                            <a class="block py-2.5 px-4 font-medium text-soil dark:text-gray-300 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="home2.html"><i class="fas fa-leaf w-6 text-herb"></i> Home 2</a>
+                        </div>
+                    </div>
+                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="about.html">About</a>
+                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="products.html">Products</a>
+                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="glossary.html">Glossary</a>
+                    <a class="block py-3 px-4 font-bold text-herb bg-herb/10 border-l-4 border-herb rounded-xl transition" href="gallery.html">Gallery</a>
+                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="book.html">Book Consultation</a>
+                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="contact.html">Contact</a>
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-sand dark:border-dusk/40">
+                        <a class="text-center py-2 rounded-full font-medium text-herb border border-herb" href="login.html">Log in</a>
+                        <a class="text-center btn-primary py-2 rounded-full" href="signup.html">Sign Up Free</a>
+                        <div class="flex gap-3">
+                            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb text-sm font-medium flex items-center gap-2 justify-center">
+                                <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme
+                            </button>
+                            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb text-sm font-medium flex items-center gap-2 justify-center">
+                                ⇄ RTL Mode
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== GALLERY HERO ====== -->
+    <section class="pt-36 pb-12 bg-cream dark:bg-black relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10 dark:opacity-20">
+            <img src="assest/ayurveda_herbs.jpg" alt="herbal background" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-cream/30 via-cream/70 to-cream dark:from-black/40 dark:via-black/70 dark:to-black z-0"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block bg-herb/10 text-herb text-sm font-bold px-5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-herb/20">📸 Visual Journey</span>
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-soil dark:text-white leading-tight">
+                Ayurveda in <span class="text-herb">Harmony</span>
+            </h1>
+            <p class="text-lg text-dusk dark:text-gray-300 max-w-2xl mx-auto mt-4">
+                A glimpse into the world of Ayurveda — where nature, tradition, and wellbeing come together.
+            </p>
+        </div>
+    </section>
+
+    <!-- ====== GALLERY GRID ====== -->
+    <main class="py-12 bg-white dark:bg-[#2D2A3A] relative z-20">
+        <div class="container mx-auto px-6">
+            
+            <!-- Category filter tags -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <span class="gallery-tag bg-herb text-white border-herb">All</span>
+                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌿 Herbs</span>
+                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🧘 Wellness</span>
+                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌸 Skincare</span>
+                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌱 Nature</span>
+                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🍵 Teas</span>
+            </div>
+
+            <!-- Equal size image cards grid (6 Cards) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- Item 1: Herbal Tea Blending -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_tea_blend.jpg" alt="Herbal Tea Blending" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Herbal Tea Blending</h3>
+                        <p>Crafting signature botanical infusions</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Sacred Organic Herbs -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_sacred_herbs.jpg" alt="Sacred Organic Herbs" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Sacred Organic Herbs</h3>
+                        <p>Freshly harvested botanicals</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Traditional Oils & Elixirs -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_herbal_oils.jpg" alt="Traditional Oils & Elixirs" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Traditional Oils &amp; Elixirs</h3>
+                        <p>Cold-pressed herbal infusions</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Mortar & Herbal Remedies -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_mortar_remedy.jpg" alt="Mortar & Herbal Remedies" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Mortar &amp; Herbal Remedies</h3>
+                        <p>Traditional hand-crafted pastes</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Yoga & Mindfulness -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_yoga_mindfulness.jpg" alt="Yoga & Mindfulness" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Yoga &amp; Mindfulness</h3>
+                        <p>Harmonizing body, mind &amp; spirit</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Ayurvedic Skincare Rituals -->
+                <div class="gallery-item aspect-[4/3] w-full">
+                    <img src="assest/gallery_skincare_ritual.jpg" alt="Ayurvedic Skincare Rituals" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3>Ayurvedic Skincare Rituals</h3>
+                        <p>Botanical beauty &amp; clay masks</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom note -->
+            <div class="text-center mt-12 pt-8 border-t border-sand dark:border-dusk/20 max-w-2xl mx-auto">
+                <p class="text-sm text-dusk dark:text-gray-400">
+                    <i class="fas fa-camera text-herb mr-2"></i>
+                    A visual celebration of Ayurvedic living — each image tells a story of nature, tradition, and wellbeing.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ====== EXTRA SECTION 1: CRAFTSMANSHIP & BEHIND THE SCENES ====== -->
+    <section class="py-20 bg-gradient-to-b from-cream/40 via-white to-cream/30 dark:from-[#1A1825] dark:via-[#221F33] dark:to-[#1A1825] relative overflow-hidden border-t border-sand/60 dark:border-dusk/20">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-14">
+                <span class="inline-flex items-center gap-2 bg-herb/10 dark:bg-herb/20 border border-herb/20 text-herb font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm">
+                    <i class="fas fa-camera"></i> Behind the Lens
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-soil dark:text-white">The Art of Herbal Crafting</h2>
+                <p class="text-dusk dark:text-gray-300 max-w-xl mx-auto mt-2 text-sm leading-relaxed">Every image captures a moment of devotion to nature and traditional healing.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="group bg-white/90 dark:bg-[#1E1C2B]/90 backdrop-blur-sm p-8 rounded-3xl border border-sand/80 dark:border-white/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden border-t-4 border-t-herb">
+                    <div class="w-14 h-14 rounded-2xl bg-herb/15 text-herb flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-herb group-hover:text-white transition-all duration-300 shadow-sm"><i class="fas fa-seedling"></i></div>
+                    <h3 class="text-xl font-bold text-soil dark:text-white mb-3">Sacred Harvesting</h3>
+                    <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Herbs are picked at optimal lunar phases and solar alignments for maximum vital force (Prana).</p>
+                </div>
+                <div class="group bg-white/90 dark:bg-[#1E1C2B]/90 backdrop-blur-sm p-8 rounded-3xl border border-sand/80 dark:border-white/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden border-t-4 border-t-clay">
+                    <div class="w-14 h-14 rounded-2xl bg-clay/15 text-clay flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-clay group-hover:text-white transition-all duration-300 shadow-sm"><i class="fas fa-sun"></i></div>
+                    <h3 class="text-xl font-bold text-soil dark:text-white mb-3">Shade &amp; Sun Drying</h3>
+                    <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Naturally dehydrated under controlled shade to lock in volatile essential oils and chlorophyll.</p>
+                </div>
+                <div class="group bg-white/90 dark:bg-[#1E1C2B]/90 backdrop-blur-sm p-8 rounded-3xl border border-sand/80 dark:border-white/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden border-t-4 border-t-soil dark:border-t-white">
+                    <div class="w-14 h-14 rounded-2xl bg-soil/15 dark:bg-white/15 text-soil dark:text-white flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-soil dark:group-hover:bg-white dark:group-hover:text-soil transition-all duration-300 shadow-sm"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3 class="text-xl font-bold text-soil dark:text-white mb-3">Hand-Pounded Blends</h3>
+                    <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Small batches ground using traditional stone mortar pestles (Kharal) to retain thermal purity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EXTRA SECTION 2: INSTAGRAM & COMMUNITY SPOTLIGHT ====== -->
+    <section class="py-20 bg-white dark:bg-[#15131F] border-t border-sand/60 dark:border-dusk/20 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto bg-gradient-to-br from-herb/10 via-cream/50 to-clay/10 dark:from-herb/20 dark:via-[#1E1C2B] dark:to-clay/20 p-10 md:p-14 rounded-3xl border border-herb/20 dark:border-white/10 shadow-xl relative overflow-hidden">
+                <span class="inline-flex items-center gap-2 bg-herb/10 dark:bg-herb/20 border border-herb/20 text-herb font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm mb-4">
+                    <i class="fab fa-instagram"></i> Social Community
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-soil dark:text-white mb-4">Share Your #AyurvedaRitual</h2>
+                <p class="text-dusk dark:text-gray-300 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Tag <span class="font-bold text-herb">@AyurvedaAyurveda</span> on Instagram to feature your daily wellness moments in our worldwide gallery.</p>
+                <div class="flex justify-center">
+                    <a href="https://instagram.com" target="_blank" class="bg-herb text-white px-8 py-3.5 rounded-full font-bold shadow-lg hover:bg-herb-dark hover:scale-105 transition duration-300 inline-flex items-center gap-3 text-sm">
+                        <i class="fab fa-instagram text-lg"></i> Follow @AyurvedaAyurveda
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CTA / FINISHING SECTION (same as about page) ====== -->
+    <section class="py-20 bg-herb">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <i class="fas fa-leaf text-white text-4xl mb-4 inline-block animate-herb-spin"></i>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Connect With Our Experts</h2>
+                <p class="text-white/90 text-lg mb-8">Book a free 15-minute consultation to discover your dosha and receive personalized herbal recommendations.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="book.html" class="bg-white text-herb px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition inline-flex items-center gap-2"><i class="fas fa-calendar-check"></i> Book Consultation</a>
+                    <a href="products.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-herb transition"><i class="fas fa-shopping-bag"></i> Explore Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER (exactly same as home page) ====== -->
+    <footer class="bg-white dark:bg-black text-soil dark:text-gray-300 pt-16 pb-8 border-t-4 border-herb transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-herb rounded-xl flex items-center justify-center shadow-lg"><i class="fas fa-leaf text-white text-base md:text-lg animate-herb-spin"></i></div>
+                        <span class="text-lg md:text-2xl font-display font-bold tracking-tight text-soil dark:text-white">AYURVEDA</span>
+                    </div>
+                    <p class="mb-5 text-dusk dark:text-gray-400 text-sm">Herbal wisdom for modern wellbeing. Pure, potent, and planet-friendly.</p>
+                    <div class="flex justify-center md:justify-start gap-3">
+                        <a href="#" class="social-icon-herb"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-herb"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon-herb"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-herb transition block text-soil dark:text-gray-400">About Ayurveda</a></li>
+                        <li><a href="shop.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Shop Herbs</a></li>
+                        <li><a href="wellness.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Wellness Programs</a></li>
+                        <li><a href="blog.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Ayurveda Blog</a></li>
+                        <li><a href="book.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Book Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="signup.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Join Newsletter</a></li>
+                        <li><a href="contact.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Become a Partner</a></li>
+                        <li><a href="wellness.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Wellness Tips</a></li>
+                        <li><a href="about.html" class="hover:text-herb transition block text-soil dark:text-gray-400">FAQs</a></li>
+                        <li><a href="contact.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-map-marker-alt text-herb mt-1"></i><span>45 Wellness Lane, LA</span></li>
+                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-phone text-herb"></i><span>(555) 123-HERB</span></li>
+                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-envelope text-herb"></i><span>hello@ayurveda.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-sand dark:border-dusk/30 text-center text-sm text-soil dark:text-gray-500">
+                <p>&copy; 2026 AYURVEDA | Herbal & Ayurvedic Wellness. All rights reserved. <i class="fas fa-heart text-herb mx-1"></i> Nurture nature.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== SCRIPTS (same as home) ====== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme toggle
+            const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+            themeBtns.forEach(btn => {
+                btn?.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            });
+            if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
+            // RTL toggle
+            function setRTL(isRTL) {
+                const html = document.documentElement;
+                if (isRTL) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); }
+                else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+            }
+            const savedDir = localStorage.getItem('dir');
+            if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+            else document.documentElement.setAttribute('dir', 'ltr');
+
+            const rtlBtn = document.getElementById('rtl-toggle');
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', () => {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    setRTL(currentDir !== 'rtl');
+                });
+            }
+            const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+            if (mobileRtlBtn) {
+                mobileRtlBtn.addEventListener('click', () => {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    setRTL(currentDir !== 'rtl');
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const mobileToggle = document.getElementById('mobile-toggle');
+                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        if (mobileToggle && mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                    const icon = mobileToggle.querySelector('i');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        if (mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

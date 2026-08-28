@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 · Page Not Found | Ayurveda · Herbal & Ayurvedic Wellness</title>
+    <!-- Custom Favicon - Herbal leaf -->
+    <link rel="icon" type="image/svg+xml" href="assest/favicon.svg">
+    <meta name="description"
+        content="Whoops! That page has drifted away. The wisdom you seek is elsewhere — let's guide you back to the path of wellness.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        herb: '#4A7C59',
+                        clay: '#C27A4A',
+                        sand: '#E8DCC4',
+                        soil: '#5C4B3A',
+                        cream: '#F9F5ED',
+                        dusk: '#6D6875',
+                    },
+                    fontFamily: {
+                        'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+                        'body': ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'herb-pattern': "radial-gradient(circle at 20% 30%, rgba(74, 124, 89, 0.06) 0%, transparent 70%)",
+                    },
+                    animation: {
+                        'spin-slow': 'spinSlow 12s linear infinite',
+                        'herb-bounce': 'herbBounce 2.5s ease-in-out infinite',
+                        'float-gentle': 'floatGentle 4s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'herb-spin': 'herbSpin 4s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+                        herbBounce: { '0%,100%': { transform: 'translateY(0) rotate(0deg)' }, '50%': { transform: 'translateY(-12px) rotate(8deg)' } },
+                        floatGentle: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        herbSpin: { '0%': { transform: 'rotate(0deg) scale(1)' }, '50%': { transform: 'rotate(10deg) scale(1.05)' }, '100%': { transform: 'rotate(0deg) scale(1)' } },
+                        pulseSoft: { '0%,100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #F9F5ED;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #5C4B3A;
+            line-height: 1.6;
+        }
+
+        .dark body {
+            background-color: #121212;
+            color: #F4F1DE;
+        }
+
+        /* Dark mode text overrides */
+        .dark .text-soil {
+            color: #F4F1DE;
+        }
+
+        .dark .text-dusk {
+            color: #9CA3AF;
+        }
+
+        /* Toggle Buttons - earthy */
+        .toggle-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: white;
+            color: #4A7C59;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(74, 124, 89, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .dark .toggle-btn {
+            background: #1E1E1E;
+            color: #4A7C59;
+            border-color: rgba(74, 124, 89, 0.3);
+        }
+
+        .toggle-btn:hover {
+            background: #4A7C59;
+            color: white;
+        }
+
+        .dark .toggle-btn:hover {
+            background: #4A7C59;
+            color: white;
+        }
+
+        .toggle-btn.active {
+            background: #4A7C59;
+            color: white;
+        }
+
+        /* Button styles - herb green */
+        .btn-primary {
+            background: #4A7C59;
+            color: white;
+            padding: 0.85rem 2rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(74, 124, 89, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: #3A6548;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 124, 89, 0.45);
+        }
+
+        .btn-secondary {
+            border: 1.5px solid #4A7C59;
+            background: transparent;
+            color: #4A7C59;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dark .btn-secondary {
+            color: #4A7C59;
+        }
+
+        .btn-secondary:hover {
+            background: #4A7C59;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Accent line - earthy */
+        .herb-line {
+            width: 70px;
+            height: 3px;
+            background: #4A7C59;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        .floating-leaf {
+            animation: floatGentle 4s ease-in-out infinite;
+        }
+
+        /* RTL Fixes */
+        [dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+            margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+
+        [dir="rtl"] .ml-8 {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+
+        [dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+
+        [dir="rtl"] .herb-line {
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+
+<body class="bg-cream dark:bg-canvas-dark herb-pattern">
+
+    <!-- ========== HEADER (simplified) ========== -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-sand dark:border-dusk/30 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
+                <!-- Logo with leaf -->
+                <a href="index.html" class='flex items-center gap-2 md:gap-3 group shrink-0'>
+                    <div
+                        class="w-9 h-9 md:w-10 md:h-10 bg-herb rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300">
+                        <i class="fas fa-leaf text-white text-base md:text-lg animate-herb-spin"></i>
+                    </div>
+                    <div>
+                        <span
+                            class="text-lg md:text-2xl font-display font-bold tracking-tight text-soil dark:text-white">AYURVEDA</span>
+                    </div>
+                </a>
+
+                <!-- Toggle Buttons Only -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle"
+                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="rtl-toggle"
+                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center font-bold text-base"
+                        title="Toggle RTL/LTR">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== 404 MAIN CONTENT ========== -->
+    <div class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+        <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+
+            <!-- Animated Leaf Icon -->
+            <div class="mb-6 floating-leaf">
+                <div
+                    class="w-28 h-28 md:w-36 md:h-36 rounded-full border-8 border-herb/30 flex items-center justify-center mx-auto relative">
+                    <i class="fas fa-leaf text-herb text-5xl md:text-6xl animate-herb-spin"></i>
+                    <div class="absolute inset-0 rounded-full border-4 border-herb/20 animate-pulse-soft"></div>
+                </div>
+            </div>
+
+            <!-- Large 404 Number -->
+            <div class="mb-4">
+                <span
+                    class="text-[120px] md:text-[180px] font-display font-extrabold text-herb leading-none tracking-tighter drop-shadow-lg">404</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl md:text-3xl font-display font-bold text-soil dark:text-white mb-3">
+                The Wisdom You Seek Has Drifted
+            </h1>
+
+            <!-- Divider -->
+            <div class="herb-line"></div>
+
+            <!-- Message -->
+            <p class="text-base md:text-lg text-dusk dark:text-gray-300 mb-8 leading-relaxed max-w-md mx-auto">
+                This page has wandered off the path of wellness. Don't worry — let's guide you back to balance and
+                harmony.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-seedling mr-1"></i> Return to Home
+                </a>
+                <a href="products.html" class="btn-secondary">
+                    <i class="fas fa-leaf mr-1 animate-herb-spin"></i> Explore Herbs
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="border-t border-herb/20 pt-8">
+                <p class="text-sm text-dusk dark:text-gray-400 mb-4">
+                    <i class="fas fa-hand-holding-heart text-herb mr-2"></i> Nurture Your Wellness — Quick Navigation
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <a href="about.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">About</a>
+                    <span class="text-herb/40">•</span>
+                    <a href="products.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Products</a>
+                    <span class="text-herb/40">•</span>
+                    <a href="glossary.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Glossary</a>
+                    <span class="text-herb/40">•</span>
+                    <a href="gallery.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Gallery</a>
+                    <span class="text-herb/40">•</span>
+                    <a href="book.html"
+                        class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Consultation</a>
+                </div>
+            </div>
+
+            <!-- Gentle Note -->
+            <div class="mt-8 text-xs text-dusk/60 dark:text-gray-500">
+                <i class="fas fa-spa mr-1"></i> Like the healing power of nature, everything finds its way back to
+                balance.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+
+            const updateThemeUI = (isDark) => {
+                if (themeBtn) {
+                    const moon = themeBtn.querySelector('.fa-moon');
+                    const sun = themeBtn.querySelector('.fa-sun');
+                    if (moon && sun) {
+                        if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                    }
+                    themeBtn.classList.toggle('active', isDark);
+                }
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+            // Check saved theme
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            } else if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+                updateThemeUI(false);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                if (rtlBtn) rtlBtn.classList.toggle('active', isRtl);
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+
+            // Check saved RTL direction
+            if (localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            } else {
+                updateRtlUI(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
