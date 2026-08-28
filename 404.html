@@ -169,6 +169,29 @@
         [dir="rtl"] .herb-line {
             margin: 1rem auto;
         }
+    
+        /* High Contrast Dark Mode Form & Badge Fixes */
+        .dark input, .dark select, .dark textarea {
+            background-color: #121813 !important;
+            color: #FFFFFF !important;
+            border-color: rgba(126, 200, 145, 0.3) !important;
+        }
+        .dark input::placeholder, .dark textarea::placeholder {
+            color: #D1D5DB !important;
+            opacity: 1 !important;
+        }
+        .dark select option {
+            background-color: #1C241E !important;
+            color: #FFFFFF !important;
+        }
+        .dark label {
+            color: #F3F4F6 !important;
+        }
+        .dark .contact-card, .dark .consult-card, .dark .herb-card, .dark .auth-card {
+            background-color: #1C241E !important;
+            border-color: rgba(126, 200, 145, 0.25) !important;
+        }
+
     </style>
 </head>
 
@@ -194,12 +217,12 @@
                 <!-- Toggle Buttons Only -->
                 <div class="flex items-center gap-3">
                     <button id="theme-toggle"
-                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:inline"></i>
+                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-moon dark:hidden text-herb"></i>
+                        <i class="fas fa-sun hidden dark:inline text-amber-300"></i>
                     </button>
                     <button id="rtl-toggle"
-                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center font-bold text-base"
+                        class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center font-bold text-base"
                         title="Toggle RTL/LTR">⇄</button>
                 </div>
             </div>
@@ -214,7 +237,7 @@
             <div class="mb-6 floating-leaf">
                 <div
                     class="w-28 h-28 md:w-36 md:h-36 rounded-full border-8 border-herb/30 flex items-center justify-center mx-auto relative">
-                    <i class="fas fa-leaf text-herb text-5xl md:text-6xl animate-herb-spin"></i>
+                    <i class="fas fa-leaf text-herb dark:text-[#A7F3D0] text-5xl md:text-6xl animate-herb-spin"></i>
                     <div class="absolute inset-0 rounded-full border-4 border-herb/20 animate-pulse-soft"></div>
                 </div>
             </div>
@@ -222,7 +245,7 @@
             <!-- Large 404 Number -->
             <div class="mb-4">
                 <span
-                    class="text-[120px] md:text-[180px] font-display font-extrabold text-herb leading-none tracking-tighter drop-shadow-lg">404</span>
+                    class="text-[120px] md:text-[180px] font-display font-extrabold text-herb dark:text-[#A7F3D0] leading-none tracking-tighter drop-shadow-lg">404</span>
             </div>
 
             <!-- Title -->
@@ -251,29 +274,29 @@
 
             <!-- Quick Links -->
             <div class="border-t border-herb/20 pt-8">
-                <p class="text-sm text-dusk dark:text-gray-400 mb-4">
-                    <i class="fas fa-hand-holding-heart text-herb mr-2"></i> Nurture Your Wellness — Quick Navigation
+                <p class="text-sm text-dusk dark:text-gray-200 mb-4">
+                    <i class="fas fa-hand-holding-heart text-herb dark:text-[#A7F3D0] mr-2"></i> Nurture Your Wellness — Quick Navigation
                 </p>
                 <div class="flex flex-wrap gap-3 justify-center">
                     <a href="about.html"
                         class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">About</a>
-                    <span class="text-herb/40">•</span>
+                    <span class="text-herb dark:text-[#A7F3D0]/40">•</span>
                     <a href="products.html"
                         class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Products</a>
-                    <span class="text-herb/40">•</span>
+                    <span class="text-herb dark:text-[#A7F3D0]/40">•</span>
                     <a href="glossary.html"
                         class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Glossary</a>
-                    <span class="text-herb/40">•</span>
+                    <span class="text-herb dark:text-[#A7F3D0]/40">•</span>
                     <a href="gallery.html"
                         class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Gallery</a>
-                    <span class="text-herb/40">•</span>
+                    <span class="text-herb dark:text-[#A7F3D0]/40">•</span>
                     <a href="book.html"
                         class="text-sm font-medium text-dusk dark:text-gray-300 hover:text-herb transition">Consultation</a>
                 </div>
             </div>
 
             <!-- Gentle Note -->
-            <div class="mt-8 text-xs text-dusk/60 dark:text-gray-500">
+            <div class="mt-8 text-xs text-dusk dark:text-gray-300 font-medium">
                 <i class="fas fa-spa mr-1"></i> Like the healing power of nature, everything finds its way back to
                 balance.
             </div>

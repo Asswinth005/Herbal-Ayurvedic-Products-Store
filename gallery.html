@@ -68,8 +68,8 @@
             background-color: #1A1A1A;
             color: #F4F1DE;
         }
-        .dark .text-soil { color: #E8DCC4; }
-        .dark .text-dusk { color: #9CA3AF; }
+        
+        
         .dark nav {
             background-color: rgba(18, 18, 18, 0.96) !important;
             border-color: rgba(74, 124, 89, 0.25) !important;
@@ -308,12 +308,35 @@
         html[dir="rtl"] .dropdown-herb-menu { left: auto; right: 0; }
         html[dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
         html[dir="rtl"] .dropdown-item:hover { padding-left: 1.4rem; padding-right: 1.7rem; }
+    
+        /* High Contrast Dark Mode Form & Badge Fixes */
+        .dark input, .dark select, .dark textarea {
+            background-color: #121813 !important;
+            color: #FFFFFF !important;
+            border-color: rgba(126, 200, 145, 0.3) !important;
+        }
+        .dark input::placeholder, .dark textarea::placeholder {
+            color: #D1D5DB !important;
+            opacity: 1 !important;
+        }
+        .dark select option {
+            background-color: #1C241E !important;
+            color: #FFFFFF !important;
+        }
+        .dark label {
+            color: #F3F4F6 !important;
+        }
+        .dark .contact-card, .dark .consult-card, .dark .herb-card, .dark .auth-card {
+            background-color: #1C241E !important;
+            border-color: rgba(126, 200, 145, 0.25) !important;
+        }
+
     </style>
 </head>
 <body class="herb-pattern leaf-texture">
 
     <!-- ====== NAVIGATION (exactly same as home page) ====== -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#2D2A3A]/95 backdrop-blur-md border-b border-sand dark:border-dusk/30 shadow-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#121613]/95 backdrop-blur-md border-b border-sand dark:border-dusk/30 shadow-sm">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0">
                 <!-- Logo -->
@@ -330,7 +353,7 @@
                     <!-- Desktop nav -->
                     <div class="hidden lg:flex items-center gap-3 xl:gap-6">
                         <div class="dropdown-herb">
-                            <button class="nav-link text-soil dark:text-gray-200 hover:text-herb transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
+                            <button class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition flex items-center gap-1 py-2 whitespace-nowrap text-sm xl:text-base">
                                 Home <i class="fas fa-chevron-down text-xs ml-1"></i>
                             </button>
                             <div class="dropdown-herb-menu">
@@ -338,18 +361,18 @@
                                 <a class="dropdown-item" href="home2.html"> Home 2</a>
                             </div>
                         </div>
-                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
-                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
-                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="glossary.html">Glossary</a>
-                        <a class="nav-link text-herb font-bold transition whitespace-nowrap text-sm xl:text-base" href="gallery.html">Gallery</a>
-                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="book.html">Book Consultation</a>
-                        <a class="nav-link text-soil dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
+                        <a class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="about.html">About</a>
+                        <a class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="products.html">Products</a>
+                        <a class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="glossary.html">Glossary</a>
+                        <a class="nav-link text-herb dark:text-[#A7F3D0] font-bold transition whitespace-nowrap text-sm xl:text-base" href="gallery.html">Gallery</a>
+                        <a class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="book.html">Book Consultation</a>
+                        <a class="nav-link text-dusk dark:text-gray-200 hover:text-herb transition whitespace-nowrap text-sm xl:text-base" href="contact.html">Contact</a>
                     </div>
 
                     <!-- Desktop actions -->
                     <div class="hidden lg:flex items-center gap-4 ml-2">
                         <div class="dropdown-herb">
-                            <button class="w-10 h-10 rounded-full bg-herb/10 text-herb hover:bg-herb hover:text-white transition flex items-center justify-center">
+                            <button class="w-10 h-10 rounded-full bg-herb/20 dark:bg-herb/20 text-herb dark:text-[#A7F3D0] hover:bg-herb hover:text-white transition flex items-center justify-center">
                                 <i class="fas fa-user"></i>
                             </button>
                             <div class="dropdown-herb-menu" style="left: auto; right: 0;">
@@ -357,11 +380,11 @@
                                 <a class="dropdown-item" href="signup.html">Sign Up</a>
                             </div>
                         </div>
-                        <button id="theme-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center">
-                            <i class="fas fa-moon dark:hidden"></i>
-                            <i class="fas fa-sun hidden dark:inline"></i>
+                        <button id="theme-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center">
+                            <i class="fas fa-moon dark:hidden text-herb"></i>
+                            <i class="fas fa-sun hidden dark:inline text-amber-300"></i>
                         </button>
-                        <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center font-bold text-base" title="Toggle RTL/LTR">⇄</button>
+                        <button id="rtl-toggle" class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center font-bold text-base" title="Toggle RTL/LTR">⇄</button>
                     </div>
 
                     <!-- Mobile toggle -->
@@ -375,29 +398,29 @@
             <div id="mobile-menu" class="mobile-menu-herb lg:hidden">
                 <div class="py-4 px-3 space-y-1">
                     <div class="py-1">
-                        <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition cursor-pointer">
+                        <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition cursor-pointer">
                             <span>Home</span>
                             <i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
                         </button>
                         <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
-                            <a class="block py-2.5 px-4 font-medium text-herb bg-herb/5 border-l-4 border-herb rounded-xl transition" href="index.html">Home 1</a>
-                            <a class="block py-2.5 px-4 font-medium text-soil dark:text-gray-300 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="home2.html">Home 2</a>
+                            <a class="block py-2.5 px-4 font-medium text-herb dark:text-[#A7F3D0] bg-herb/5 border-l-4 border-herb rounded-xl transition" href="index.html">Home 1</a>
+                            <a class="block py-2.5 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="home2.html">Home 2</a>
                         </div>
                     </div>
-                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="about.html">About</a>
-                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="products.html">Products</a>
-                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="glossary.html">Glossary</a>
-                    <a class="block py-3 px-4 font-bold text-herb bg-herb/10 border-l-4 border-herb rounded-xl transition" href="gallery.html">Gallery</a>
-                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="book.html">Book Consultation</a>
-                    <a class="block py-3 px-4 font-medium text-soil dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="contact.html">Contact</a>
+                    <a class="block py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="about.html">About</a>
+                    <a class="block py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="products.html">Products</a>
+                    <a class="block py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="glossary.html">Glossary</a>
+                    <a class="block py-3 px-4 font-bold text-herb dark:text-[#A7F3D0] bg-herb/20 dark:bg-herb/20 border-l-4 border-herb rounded-xl transition" href="gallery.html">Gallery</a>
+                    <a class="block py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="book.html">Book Consultation</a>
+                    <a class="block py-3 px-4 font-medium text-dusk dark:text-gray-200 hover:bg-sand dark:hover:bg-dusk/30 rounded-xl transition" href="contact.html">Contact</a>
                     <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-sand dark:border-dusk/40">
-                        <a class="text-center py-2 rounded-full font-medium text-herb border border-herb" href="login.html">Log in</a>
+                        <a class="text-center py-2 rounded-full font-medium text-herb dark:text-[#A7F3D0] border border-herb" href="login.html">Log in</a>
                         <a class="text-center btn-primary py-2 rounded-full" href="signup.html">Sign Up Free</a>
                         <div class="flex gap-3">
-                            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb text-sm font-medium flex items-center gap-2 justify-center">
-                                <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme
+                            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] text-sm font-medium flex items-center gap-2 justify-center">
+                                <i class="fas fa-moon dark:hidden text-herb"></i><i class="fas fa-sun hidden dark:inline text-amber-300"></i> Theme
                             </button>
-                            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb text-sm font-medium flex items-center gap-2 justify-center">
+                            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] text-sm font-medium flex items-center gap-2 justify-center">
                                 ⇄ RTL Mode
                             </button>
                         </div>
@@ -408,34 +431,34 @@
     </nav>
 
     <!-- ====== GALLERY HERO ====== -->
-    <section class="min-h-[70vh] flex items-center pt-40 pb-20 bg-[#121813] text-white relative overflow-hidden border-b border-herb/20">
-        <div class="absolute inset-0 z-0 opacity-50 dark:opacity-60">
+    <section class="min-h-[70vh] flex items-center pt-40 pb-20 bg-[#18201A] dark:bg-black text-white relative overflow-hidden border-b border-sand dark:border-dusk/20">
+        <div class="absolute inset-0 z-0 opacity-45">
             <img src="assest/gallery_mortar_remedy.jpg" alt="Gallery Herbs Background" class="w-full h-full object-cover">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/95 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-[#18201A] dark:to-black z-0"></div>
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <span class="inline-block bg-herb/30 text-[#9EE4B4] text-sm font-bold px-5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-[#7EC891]/40 backdrop-blur-md shadow-sm">📸 Visual Journey</span>
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-white leading-tight drop-shadow-md">
-                Ayurveda in <span class="text-[#7EC891]">Harmony</span>
+            <span class="inline-block bg-herb/20 text-[#A7F3D0] text-sm font-bold px-5 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-herb/30">📸 Visual Journey</span>
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+                Ayurveda in <span class="text-[#A7F3D0]">Harmony</span>
             </h1>
-            <p class="text-lg text-cream/90 max-w-2xl mx-auto mt-4 font-normal drop-shadow-sm">
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto mt-4 font-normal drop-shadow-md">
                 A glimpse into the world of Ayurveda — where nature, tradition, and wellbeing come together.
             </p>
         </div>
     </section>
 
     <!-- ====== GALLERY GRID ====== -->
-    <main class="py-12 bg-white dark:bg-[#2D2A3A] relative z-20">
+    <main class="py-12 bg-white dark:bg-[#121613] relative z-20">
         <div class="container mx-auto px-6">
             
             <!-- Category filter tags -->
             <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <span class="gallery-tag bg-herb text-white border-herb">All</span>
-                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌿 Herbs</span>
-                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🧘 Wellness</span>
-                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌸 Skincare</span>
-                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🌱 Nature</span>
-                <span class="gallery-tag hover:bg-herb hover:text-white transition-colors cursor-pointer">🍵 Teas</span>
+                <span class="gallery-tag bg-herb text-soil dark:text-white border-herb">All</span>
+                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌿 Herbs</span>
+                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🧘 Wellness</span>
+                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌸 Skincare</span>
+                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌱 Nature</span>
+                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🍵 Teas</span>
             </div>
 
             <!-- Equal size image cards grid (6 Cards) -->
@@ -499,8 +522,8 @@
 
             <!-- Bottom note -->
             <div class="text-center mt-12 pt-8 border-t border-sand dark:border-dusk/20 max-w-2xl mx-auto">
-                <p class="text-sm text-dusk dark:text-gray-400">
-                    <i class="fas fa-camera text-herb mr-2"></i>
+                <p class="text-sm text-dusk dark:text-gray-300">
+                    <i class="fas fa-camera text-herb dark:text-[#A7F3D0] mr-2"></i>
                     A visual celebration of Ayurvedic living — each image tells a story of nature, tradition, and wellbeing.
                 </p>
             </div>
@@ -511,7 +534,7 @@
     <section class="py-20 bg-gradient-to-b from-cream/40 via-white to-[#121813]/30 dark:from-[#1A1825] dark:via-[#221F33] dark:to-[#1A1825] relative overflow-hidden border-t border-sand/60 dark:border-dusk/20">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-14">
-                <span class="inline-flex items-center gap-2 bg-herb/10 dark:bg-herb/20 border border-herb/20 text-herb font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm">
+                <span class="inline-flex items-center gap-2 bg-herb/20 dark:bg-herb/20 border border-[#7EC891]/30 text-herb dark:text-[#A7F3D0] font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm">
                     <i class="fas fa-camera"></i> Behind the Lens
                 </span>
                 <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-soil dark:text-white">The Art of Herbal Crafting</h2>
@@ -519,7 +542,7 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div class="group bg-white/90 dark:bg-[#1E1C2B]/90 backdrop-blur-sm p-8 rounded-3xl border border-sand/80 dark:border-white/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden border-t-4 border-t-herb">
-                    <div class="w-14 h-14 rounded-2xl bg-herb/15 text-herb flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-herb group-hover:text-white transition-all duration-300 shadow-sm"><i class="fas fa-seedling"></i></div>
+                    <div class="w-14 h-14 rounded-2xl bg-herb/15 text-herb dark:text-[#A7F3D0] flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-herb group-hover:text-white transition-all duration-300 shadow-sm"><i class="fas fa-seedling"></i></div>
                     <h3 class="text-xl font-bold text-soil dark:text-white mb-3">Sacred Harvesting</h3>
                     <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Herbs are picked at optimal lunar phases and solar alignments for maximum vital force (Prana).</p>
                 </div>
@@ -529,7 +552,7 @@
                     <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Naturally dehydrated under controlled shade to lock in volatile essential oils and chlorophyll.</p>
                 </div>
                 <div class="group bg-white/90 dark:bg-[#1E1C2B]/90 backdrop-blur-sm p-8 rounded-3xl border border-sand/80 dark:border-white/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden border-t-4 border-t-soil dark:border-t-white">
-                    <div class="w-14 h-14 rounded-2xl bg-soil/15 dark:bg-white/15 text-soil dark:text-white flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-soil dark:group-hover:bg-white dark:group-hover:text-soil transition-all duration-300 shadow-sm"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="w-14 h-14 rounded-2xl bg-soil/10 dark:bg-white/15 text-soil dark:text-white flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:bg-soil group-hover:text-white transition-all duration-300 shadow-sm"><i class="fas fa-hand-holding-heart"></i></div>
                     <h3 class="text-xl font-bold text-soil dark:text-white mb-3">Hand-Pounded Blends</h3>
                     <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed">Small batches ground using traditional stone mortar pestles (Kharal) to retain thermal purity.</p>
                 </div>
@@ -540,12 +563,12 @@
     <!-- ====== EXTRA SECTION 2: INSTAGRAM & COMMUNITY SPOTLIGHT ====== -->
     <section class="py-20 bg-white dark:bg-[#15131F] border-t border-sand/60 dark:border-dusk/20 relative">
         <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto bg-gradient-to-br from-herb/10 via-cream/50 to-clay/10 dark:from-herb/20 dark:via-[#1E1C2B] dark:to-clay/20 p-10 md:p-14 rounded-3xl border border-herb/20 dark:border-white/10 shadow-xl relative overflow-hidden">
-                <span class="inline-flex items-center gap-2 bg-herb/10 dark:bg-herb/20 border border-herb/20 text-herb font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm mb-4">
+            <div class="max-w-3xl mx-auto bg-gradient-to-br from-herb/10 via-cream/50 to-clay/10 dark:from-herb/20 dark:via-[#1E1C2B] dark:to-clay/20 p-10 md:p-14 rounded-3xl border border-[#7EC891]/30 dark:border-white/10 shadow-xl relative overflow-hidden">
+                <span class="inline-flex items-center gap-2 bg-herb/20 dark:bg-herb/20 border border-[#7EC891]/30 text-herb dark:text-[#A7F3D0] font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm mb-4">
                     <i class="fab fa-instagram"></i> Social Community
                 </span>
                 <h2 class="text-3xl md:text-4xl font-display font-bold text-soil dark:text-white mb-4">Share Your #AyurvedaRitual</h2>
-                <p class="text-dusk dark:text-gray-300 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Tag <span class="font-bold text-[#7EC891]">@AyurvedaAyurveda</span> on Instagram to feature your daily wellness moments in our worldwide gallery.</p>
+                <p class="text-dusk dark:text-gray-300 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Tag <span class="font-bold text-herb dark:text-[#A7F3D0]">@AyurvedaAyurveda</span> on Instagram to feature your daily wellness moments in our worldwide gallery.</p>
                 <div class="flex justify-center">
                     <a href="https://instagram.com" target="_blank" class="bg-herb text-white px-8 py-3.5 rounded-full font-bold shadow-lg hover:bg-herb-dark hover:scale-105 transition duration-300 inline-flex items-center gap-3 text-sm">
                         <i class="fab fa-instagram text-lg"></i> Follow @AyurvedaAyurveda
@@ -563,60 +586,82 @@
                 <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Connect With Our Experts</h2>
                 <p class="text-white/90 text-lg mb-8">Book a free 15-minute consultation to discover your dosha and receive personalized herbal recommendations.</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="book.html" class="bg-white text-herb px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition inline-flex items-center gap-2"><i class="fas fa-calendar-check"></i> Book Consultation</a>
-                    <a href="products.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-herb transition"><i class="fas fa-shopping-bag"></i> Explore Products</a>
+                    <a href="book.html" class="bg-white text-herb font-bold px-8 py-3 rounded-full shadow-lg hover:scale-105 transition inline-flex items-center gap-2"><i class="fas fa-calendar-check"></i> Book Consultation</a>
+                    <a href="products.html" class="bg-white text-herb font-bold px-8 py-3 rounded-full shadow-lg hover:scale-105 transition inline-flex items-center gap-2"><i class="fas fa-shopping-bag"></i> Explore Products</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ====== FOOTER (exactly same as home page) ====== -->
-    <footer class="bg-white dark:bg-black text-soil dark:text-gray-300 pt-16 pb-8 border-t-4 border-herb transition-colors duration-300">
+    <footer class="bg-white dark:bg-[#121813] text-soil dark:text-gray-300 pt-16 pb-8 border-t-4 border-herb transition-colors duration-300">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand Column -->
                 <div class="text-center md:text-left">
                     <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
-                        <div class="w-9 h-9 md:w-10 md:h-10 bg-herb rounded-xl flex items-center justify-center shadow-lg"><i class="fas fa-leaf text-white text-base md:text-lg animate-herb-spin"></i></div>
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-herb rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-leaf text-white text-base md:text-lg animate-herb-spin"></i>
+                        </div>
                         <span class="text-lg md:text-2xl font-display font-bold tracking-tight text-soil dark:text-white">AYURVEDA</span>
                     </div>
-                    <p class="mb-5 text-dusk dark:text-gray-400 text-sm">Herbal wisdom for modern wellbeing. Pure, potent, and planet-friendly.</p>
+                    <p class="text-sm text-dusk dark:text-gray-300 leading-relaxed mb-6">
+                        Herbal wisdom for modern wellbeing. Pure, potent, and planet-friendly.
+                    </p>
                     <div class="flex justify-center md:justify-start gap-3">
                         <a href="#" class="social-icon-herb"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon-herb"><i class="fab fa-youtube"></i></a>
                         <a href="#" class="social-icon-herb"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
-                    <ul class="space-y-2">
-                        <li><a href="about.html" class="hover:text-herb transition block text-soil dark:text-gray-400">About Ayurveda</a></li>
-                        <li><a href="shop.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Shop Herbs</a></li>
-                        <li><a href="wellness.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Wellness Programs</a></li>
-                        <li><a href="blog.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Ayurveda Blog</a></li>
-                        <li><a href="book.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Book Consultation</a></li>
+
+                <!-- Explore Links -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold text-herb dark:text-[#A7F3D0] mb-5">Explore</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="about.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">About Ayurveda</a></li>
+                        <li><a href="products.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Shop Herbs</a></li>
+                        <li><a href="wellness.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Wellness Programs</a></li>
+                        <li><a href="glossary.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Ayurveda Blog</a></li>
+                        <li><a href="book.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Book Consultation</a></li>
                     </ul>
                 </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Community</h4>
-                    <ul class="space-y-2">
-                        <li><a href="signup.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Join Newsletter</a></li>
-                        <li><a href="contact.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Become a Partner</a></li>
-                        <li><a href="wellness.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Wellness Tips</a></li>
-                        <li><a href="about.html" class="hover:text-herb transition block text-soil dark:text-gray-400">FAQs</a></li>
-                        <li><a href="contact.html" class="hover:text-herb transition block text-soil dark:text-gray-400">Contact Us</a></li>
+
+                <!-- Community Links -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold text-herb dark:text-[#A7F3D0] mb-5">Community</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#newsletter" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Join Newsletter</a></li>
+                        <li><a href="contact.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Become a Partner</a></li>
+                        <li><a href="gallery.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Wellness Tips</a></li>
+                        <li><a href="glossary.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">FAQs</a></li>
+                        <li><a href="contact.html" class="text-dusk dark:text-gray-300 hover:text-herb dark:hover:text-[#A7F3D0] transition">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-black dark:text-herb font-bold text-lg mb-5 uppercase tracking-wider">Studio</h4>
-                    <ul class="space-y-3">
-                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-map-marker-alt text-herb mt-1"></i><span>45 Wellness Lane, LA</span></li>
-                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-phone text-[#7EC891]"></i><span>(555) 123-HERB</span></li>
-                        <li class="flex justify-center md:justify-start gap-3 text-soil dark:text-gray-400"><i class="fas fa-envelope text-[#7EC891]"></i><span>hello@ayurveda.com</span></li>
+
+                <!-- Studio Column -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold text-herb dark:text-[#A7F3D0] mb-5">Studio</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3 text-dusk dark:text-gray-300">
+                            <i class="fas fa-map-marker-alt text-herb dark:text-[#A7F3D0]"></i>
+                            <span>45 Wellness Lane, LA</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dusk dark:text-gray-300">
+                            <i class="fas fa-phone text-herb dark:text-[#A7F3D0]"></i>
+                            <span>(555) 123-HERB</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dusk dark:text-gray-300">
+                            <i class="fas fa-envelope text-herb dark:text-[#A7F3D0]"></i>
+                            <span>hello@ayurveda.com</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-sand dark:border-dusk/30 text-center text-sm text-soil dark:text-gray-500">
-                <p>&copy; 2026 AYURVEDA | Herbal & Ayurvedic Wellness. All rights reserved. <i class="fas fa-heart text-herb mx-1"></i> Nurture nature.</p>
+
+            <!-- Copyright Bar -->
+            <div class="mt-12 pt-8 border-t border-sand dark:border-dusk/30 text-center text-sm text-dusk dark:text-gray-300">
+                <p>© 2026 AYURVEDA | Herbal &amp; Ayurvedic Wellness. All rights reserved. <span class="text-herb dark:text-[#A7F3D0]">♥ Nurture nature.</span></p>
             </div>
         </div>
     </footer>

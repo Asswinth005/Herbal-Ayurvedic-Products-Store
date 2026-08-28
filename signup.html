@@ -656,6 +656,29 @@
                 left: 12px;
             }
         }
+    
+        /* High Contrast Dark Mode Form & Badge Fixes */
+        .dark input, .dark select, .dark textarea {
+            background-color: #121813 !important;
+            color: #FFFFFF !important;
+            border-color: rgba(126, 200, 145, 0.3) !important;
+        }
+        .dark input::placeholder, .dark textarea::placeholder {
+            color: #D1D5DB !important;
+            opacity: 1 !important;
+        }
+        .dark select option {
+            background-color: #1C241E !important;
+            color: #FFFFFF !important;
+        }
+        .dark label {
+            color: #F3F4F6 !important;
+        }
+        .dark .contact-card, .dark .consult-card, .dark .herb-card, .dark .auth-card {
+            background-color: #1C241E !important;
+            border-color: rgba(126, 200, 145, 0.25) !important;
+        }
+
     </style>
 </head>
 
@@ -664,12 +687,12 @@
     <!-- ===== THEME TOGGLES - TOP-RIGHT ===== -->
     <div class="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 flex items-center gap-2.5 sm:gap-3 rtl:right-auto rtl:left-3 sm:rtl:left-5">
         <button id="theme-toggle"
-            class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center">
-            <i class="fas fa-moon dark:hidden"></i>
-            <i class="fas fa-sun hidden dark:inline"></i>
+            class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center">
+            <i class="fas fa-moon dark:hidden text-herb"></i>
+            <i class="fas fa-sun hidden dark:inline text-amber-300"></i>
         </button>
         <button id="rtl-toggle"
-            class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb hover:scale-110 transition flex items-center justify-center font-bold text-base"
+            class="w-10 h-10 rounded-full bg-sand dark:bg-dusk/40 text-herb dark:text-[#A7F3D0] hover:scale-110 transition flex items-center justify-center font-bold text-base"
             title="Toggle RTL/LTR">⇄</button>
     </div>
 
@@ -697,7 +720,7 @@
 
                 <!-- full name field -->
                 <div class="relative">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb input-icon">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb dark:text-[#A7F3D0] input-icon">
                         <i class="fas fa-user w-4 text-sm"></i>
                     </span>
                     <input type="text" id="fullName" name="name" placeholder="Full name" required
@@ -706,7 +729,7 @@
 
                 <!-- email field -->
                 <div class="relative">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb input-icon">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb dark:text-[#A7F3D0] input-icon">
                         <i class="fas fa-envelope w-4 text-sm"></i>
                     </span>
                     <input type="email" id="email" name="email" placeholder="Email address" required
@@ -715,7 +738,7 @@
 
                 <!-- password field with eye icon -->
                 <div class="password-wrapper">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb input-icon">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb dark:text-[#A7F3D0] input-icon">
                         <i class="fas fa-lock w-4 text-sm"></i>
                     </span>
                     <input type="password" id="signup-password" name="password" placeholder="Password" required
@@ -728,7 +751,7 @@
 
                 <!-- confirm password field with eye icon -->
                 <div class="password-wrapper">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb input-icon">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-herb dark:text-[#A7F3D0] input-icon">
                         <i class="fas fa-lock w-4 text-sm"></i>
                     </span>
                     <input type="password" id="signup-confirm-password" name="confirm_password"
@@ -742,7 +765,7 @@
                 <!-- terms and conditions checkbox -->
                 <div class="flex items-start space-x-2 rtl:space-x-reverse mt-1">
                     <input type="checkbox" id="terms"
-                        class="mt-0.5 rounded border-gray-300 dark:border-gray-600 text-herb focus:ring-herb/30 dark:bg-gray-700"
+                        class="mt-0.5 rounded border-gray-300 dark:border-gray-600 text-herb dark:text-[#A7F3D0] focus:ring-herb/30 dark:bg-gray-700"
                         required>
                     <label for="terms" class="terms-text">
                         I agree to the <a href="#" class="terms-link" id="termsLink">Terms of Service</a> and <a
@@ -774,7 +797,7 @@
 
             <!-- ===== LOGIN LINK ===== -->
             <div class="mt-4 text-center">
-                <span class="text-xs text-dusk dark:text-gray-400">Already part of the Ayurveda community?</span>
+                <span class="text-xs text-dusk dark:text-gray-200">Already part of the Ayurveda community?</span>
                 <a href="login.html"
                     class="text-xs font-semibold text-herb dark:text-herb hover:text-herb-dark ml-1 rtl:mr-1 hover:underline">
                     Sign in
