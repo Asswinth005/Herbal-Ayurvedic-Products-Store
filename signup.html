@@ -66,7 +66,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             margin: 0;
-            padding: 4.5rem 1rem 2rem;
+            padding: 4rem 1rem 2rem;
             background-color: #F9F5ED;
             color: #5C4B3A;
             display: flex;
@@ -77,12 +77,120 @@
             font-family: 'Inter', system-ui, sans-serif;
         }
 
-        @media (min-height: 720px) and (min-width: 640px) {
+        /* Desktop viewports (fit exactly in 1 page without scrollbar) */
+        @media (min-width: 640px) and (min-height: 550px) {
+            html, body {
+                height: 100vh;
+                overflow: hidden !important;
+            }
+
             body {
-                padding: 2rem 1rem;
+                padding: 0 1rem;
+                justify-content: center;
+            }
+
+            .login-card,
+            .signup-card {
+                padding: 1.4rem 2rem 1.25rem !important;
+                border-radius: 32px !important;
+                max-width: 450px !important;
+            }
+
+            .logo-center {
+                margin-bottom: 0.85rem !important;
+            }
+
+            .welcome-title {
+                font-size: 1.4rem !important;
+                line-height: 1.3 !important;
+                margin-top: 0.25rem !important;
+            }
+
+            .welcome-subtitle {
+                font-size: 0.82rem !important;
+                line-height: 1.2 !important;
+                margin-top: 0.15rem !important;
+            }
+
+            .login-input,
+            .signup-input {
+                padding-top: 0.65rem !important;
+                padding-bottom: 0.65rem !important;
+                font-size: 0.88rem !important;
+            }
+
+            .hoop-btn,
+            .btn-primary {
+                padding-top: 0.7rem !important;
+                padding-bottom: 0.7rem !important;
+            }
+
+            .divider {
+                margin: 0.5rem 0 !important;
+            }
+
+            .social-btn {
+                padding-top: 0.55rem !important;
+                padding-bottom: 0.55rem !important;
             }
         }
+        
+        /* Short landscape viewports (Nest Hub 600px, mobile landscape, etc.) */
+        @media (max-height: 680px) {
+            body {
+                padding: 1rem 1rem 0.8rem;
+                justify-content: center;
+            }
 
+            .login-card,
+            .signup-card {
+                padding: 1.1rem 1.5rem !important;
+                border-radius: 24px !important;
+                max-width: 440px !important;
+            }
+
+            .logo-center {
+                margin-bottom: 0.75rem !important;
+            }
+
+            .welcome-title {
+                font-size: 1.25rem !important;
+                line-height: 1.3 !important;
+                margin-top: 0.2rem !important;
+            }
+
+            .welcome-subtitle {
+                font-size: 0.78rem !important;
+                line-height: 1.2 !important;
+                margin-top: 0.1rem !important;
+            }
+
+            .login-input,
+            .signup-input {
+                padding-top: 0.55rem !important;
+                padding-bottom: 0.55rem !important;
+                font-size: 0.85rem !important;
+            }
+
+            
+
+            .mb-8 {
+                margin-bottom: 0.75rem !important;
+            }
+
+            .space-y-5 > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0;
+                margin-top: calc(0.65rem * calc(1 - var(--tw-space-y-reverse)));
+                margin-bottom: calc(0.65rem * var(--tw-space-y-reverse));
+            }
+
+            .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0;
+                margin-top: calc(0.55rem * calc(1 - var(--tw-space-y-reverse)));
+                margin-bottom: calc(0.55rem * var(--tw-space-y-reverse));
+            }
+        }
+        
         .dark body {
             background-color: #121212;
             color: #F4F1DE;
