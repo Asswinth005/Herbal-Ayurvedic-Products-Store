@@ -282,66 +282,58 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Theme Toggle
-            const themeBtn = document.getElementById('theme-toggle');
 
-            const updateThemeUI = (isDark) => {
-                if (themeBtn) {
-                    const moon = themeBtn.querySelector('.fa-moon');
-                    const sun = themeBtn.querySelector('.fa-sun');
-                    if (moon && sun) {
-                        if (isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
-                        else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
-                    }
-                    themeBtn.classList.toggle('active', isDark);
-                }
-            };
-
-            const toggleTheme = () => {
-                document.documentElement.classList.toggle('dark');
-                const isDark = document.documentElement.classList.contains('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                updateThemeUI(isDark);
-            };
-
-            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-
-            // Check saved theme
-            if (localStorage.getItem('theme') === 'dark') {
+        // ---------- THEME TOGGLE ----------
+        const themeToggle = document.getElementById('theme-toggle');
+        function setTheme(isDark) {
+            if (isDark) {
                 document.documentElement.classList.add('dark');
-                updateThemeUI(true);
-            } else if (localStorage.getItem('theme') === 'light') {
-                document.documentElement.classList.remove('dark');
-                updateThemeUI(false);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.classList.add('dark');
-                updateThemeUI(true);
-            }
-
-            // RTL Toggle
-            const rtlBtn = document.getElementById('rtl-toggle');
-
-            const updateRtlUI = (isRtl) => {
-                const dir = isRtl ? 'rtl' : 'ltr';
-                document.documentElement.dir = dir;
-                document.documentElement.lang = isRtl ? 'ar' : 'en';
-                if (rtlBtn) rtlBtn.classList.toggle('active', isRtl);
-            };
-
-            const toggleRtl = () => {
-                const isRtl = document.documentElement.dir !== 'rtl';
-                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
-                updateRtlUI(isRtl);
-            };
-
-            if (rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
-
-            // Check saved RTL direction
-            if (localStorage.getItem('dir') === 'rtl') {
-                updateRtlUI(true);
+                localStorage.setItem('theme', 'dark');
             } else {
-                updateRtlUI(false);
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
             }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else if (savedTheme === 'light') {
+            setTheme(false);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme(true);
+        }
+        if (themeToggle) {
+            themeToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                setTheme(!document.documentElement.classList.contains('dark'));
+            });
+        }
+
+        // ---------- RTL TOGGLE ----------
+        const rtlBtn = document.getElementById('rtl-toggle');
+        function setRTL(isRTL) {
+            if (isRTL) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                localStorage.setItem('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                localStorage.setItem('dir', 'ltr');
+            }
+        }
+        const savedDir = localStorage.getItem('dir');
+        if (savedDir === 'rtl') setRTL(true);
+        else setRTL(false);
+
+        if (rtlBtn) {
+            rtlBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentDir = document.documentElement.getAttribute('dir');
+                setRTL(currentDir !== 'rtl');
+            });
+        }
+
         });
     </script>
 </body>
