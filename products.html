@@ -400,9 +400,18 @@
         </div>
     </section>
 
-    <!-- ====== CATEGORY NAV (sticky filter on desktop, unsticky on mobile) ====== -->
-    <div class="static md:sticky md:top-24 z-30 bg-white/90 dark:bg-[#121212]/90 backdrop-blur-md border-b border-sand dark:border-dusk/20 py-4">
-        <div class="container mx-auto px-6">
+    <!-- ====== 2ND SECTION: CATEGORY SELECTION & HEADING ====== -->
+    <section class="pt-14 pb-8 bg-white dark:bg-[#121613] border-b border-sand dark:border-dusk/20">
+        <div class="container mx-auto px-6 text-center">
+            <span class="inline-flex items-center gap-2 bg-herb/15 dark:bg-herb/25 text-herb dark:text-[#A7F3D0] font-bold text-xs uppercase tracking-widest px-5 py-1.5 rounded-full shadow-sm mb-3">
+                🌿 Botanical Collections
+            </span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-soil dark:text-white">
+                Explore by <span class="text-herb dark:text-[#A7F3D0]">Category</span>
+            </h2>
+            <p class="text-dusk dark:text-gray-300 max-w-xl mx-auto mt-2 text-sm md:text-base leading-relaxed mb-8">
+                Select a collection below to discover authentic organic herbs, cold-pressed oils, and Vedic remedies.
+            </p>
             <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4">
                 <a href="#teas" class="category-badge hover:bg-herb hover:text-white transition-colors duration-200">🍵 Herbal Teas</a>
                 <a href="#oils" class="category-badge hover:bg-herb hover:text-white transition-colors duration-200">🧴 Essential Oils</a>
@@ -411,7 +420,7 @@
                 <a href="#haircare" class="category-badge hover:bg-herb hover:text-white transition-colors duration-200">🌱 Hair Care</a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ====== PRODUCT SECTIONS ====== -->
     <main class="py-10 bg-white dark:bg-[#121613] relative z-20">
@@ -678,6 +687,97 @@
 
         </div>
     </main>
+
+    <!-- ====== ANUPANA & HERB SYNERGY GUIDE ====== -->
+    <section class="py-20 bg-cream/50 dark:bg-[#151a16] border-t border-sand/80 dark:border-dusk/30 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-14 max-w-3xl mx-auto">
+                <span class="inline-flex items-center gap-2 bg-herb/20 dark:bg-herb/20 border border-[#7EC891]/30 text-herb dark:text-[#A7F3D0] font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-sm">
+                    <i class="fas fa-droplet"></i> Ancient Bioavailability
+                </span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-4 text-soil dark:text-white">
+                    The Art of <span class="text-herb dark:text-[#A7F3D0]">Anupana</span> (Herb Carriers)
+                </h2>
+                <p class="text-dusk dark:text-gray-300 mt-3 text-sm md:text-base leading-relaxed">
+                    In classical Ayurveda, potent herbs require a vehicle—an <em>Anupana</em>—to guide active botanical compounds straight to target tissues and optimize absorption.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Carrier 1: Warm Water -->
+                <div class="group bg-white dark:bg-[#1E1C2B] p-6 rounded-3xl border border-sand/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between border-t-4 border-t-herb">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-herb/15 text-herb dark:text-[#A7F3D0] flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-herb dark:text-[#A7F3D0] block mb-1">Ushnodaka</span>
+                        <h3 class="text-lg font-bold text-soil dark:text-white mb-2">Warm Water</h3>
+                        <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed mb-4">
+                            Kindles digestive fire (Agni), cleanses metabolic toxins (Ama), and speeds transit through delicate bodily channels.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-sand/60 dark:border-dusk/20 text-xs">
+                        <span class="text-dusk dark:text-gray-400 font-semibold block">Best Paired With:</span>
+                        <span class="text-herb dark:text-[#A7F3D0] font-medium">Triphala, Guggulu, Detox Blends</span>
+                    </div>
+                </div>
+
+                <!-- Carrier 2: Organic Ghee -->
+                <div class="group bg-white dark:bg-[#1E1C2B] p-6 rounded-3xl border border-sand/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between border-t-4 border-t-clay">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-clay/15 text-clay flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bowl-food"></i>
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-clay block mb-1">Ghrita</span>
+                        <h3 class="text-lg font-bold text-soil dark:text-white mb-2">Organic Ghee</h3>
+                        <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed mb-4">
+                            A lipid-soluble transporter that carries herbs across cell membranes and the blood-brain barrier while soothing Pitta.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-sand/60 dark:border-dusk/20 text-xs">
+                        <span class="text-dusk dark:text-gray-400 font-semibold block">Best Paired With:</span>
+                        <span class="text-clay font-medium">Brahmi, Shatavari, Turmeric</span>
+                    </div>
+                </div>
+
+                <!-- Carrier 3: Raw Honey -->
+                <div class="group bg-white dark:bg-[#1E1C2B] p-6 rounded-3xl border border-sand/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between border-t-4 border-t-soil dark:border-t-white">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-soil/10 dark:bg-white/15 text-soil dark:text-white flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-jar"></i>
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-soil dark:text-white block mb-1">Madhu</span>
+                        <h3 class="text-lg font-bold text-soil dark:text-white mb-2">Raw Honey</h3>
+                        <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed mb-4">
+                            Acts as a catalyst (Yogavahi) scraping mucus, balancing Kapha, and driving herbal essence deep into the respiratory tract.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-sand/60 dark:border-dusk/20 text-xs">
+                        <span class="text-dusk dark:text-gray-400 font-semibold block">Best Paired With:</span>
+                        <span class="text-soil dark:text-white font-medium">Tulsi, Sitopaladi, Ginger</span>
+                    </div>
+                </div>
+
+                <!-- Carrier 4: Warm Spiced Milk -->
+                <div class="group bg-white dark:bg-[#1E1C2B] p-6 rounded-3xl border border-sand/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between border-t-4 border-t-herb">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-herb/15 text-herb dark:text-[#A7F3D0] flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-glass-water"></i>
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-herb dark:text-[#A7F3D0] block mb-1">Kshira</span>
+                        <h3 class="text-lg font-bold text-soil dark:text-white mb-2">Warm Spiced Milk</h3>
+                        <p class="text-xs text-dusk dark:text-gray-300 leading-relaxed mb-4">
+                            Nourishes all 7 bodily tissues (Dhatus), pacifies erratic Vata, builds Ojas (vital immunity), and encourages sound sleep.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-sand/60 dark:border-dusk/20 text-xs">
+                        <span class="text-dusk dark:text-gray-400 font-semibold block">Best Paired With:</span>
+                        <span class="text-herb dark:text-[#A7F3D0] font-medium">Ashwagandha, Nutmeg, Cardamom</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ====== EXTRA SECTION 1: PURITY & QUALITY GUARANTEE ====== -->
     <section class="py-20 bg-gradient-to-b from-cream/40 via-white to-[#121813]/30 dark:from-[#1A1825] dark:via-[#221F33] dark:to-[#1A1825] relative overflow-hidden border-t border-sand/60 dark:border-dusk/20">
