@@ -286,20 +286,43 @@
         }
 
         .gallery-tag {
-            display: inline-block;
-            background: rgba(74, 124, 89, 0.10);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.375rem;
+            background: rgba(74, 124, 89, 0.12);
             color: #4A7C59;
-            font-size: 0.6rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding: 0.2rem 0.7rem;
+            letter-spacing: 0.05em;
+            padding: 0.375rem 1rem;
             border-radius: 50px;
-            border: 1px solid rgba(74, 124, 89, 0.12);
+            border: 1px solid rgba(74, 124, 89, 0.20);
+            transition: all 0.25s ease;
+            line-height: 1.25;
+            cursor: pointer;
         }
         .dark .gallery-tag {
-            background: rgba(74, 124, 89, 0.18);
-            color: #8BB99C;
+            background: rgba(74, 124, 89, 0.20);
+            color: #A7F3D0;
+            border-color: rgba(126, 200, 145, 0.25);
+        }
+        .gallery-tag:hover {
+            background-color: #4A7C59;
+            color: #FFFFFF;
+            border-color: #4A7C59;
+        }
+        .dark .gallery-tag:hover {
+            background-color: #4A7C59;
+            color: #FFFFFF;
+            border-color: #4A7C59;
+        }
+        .gallery-tag.active {
+            background-color: #4A7C59 !important;
+            color: #FFFFFF !important;
+            border-color: #4A7C59 !important;
+            box-shadow: 0 2px 8px rgba(74, 124, 89, 0.35);
         }
 
         [dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
@@ -453,12 +476,12 @@
             
             <!-- Category filter tags -->
             <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <span class="gallery-tag bg-herb text-soil dark:text-white border-herb">All</span>
-                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌿 Herbs</span>
-                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🧘 Wellness</span>
-                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌸 Skincare</span>
-                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🌱 Nature</span>
-                <span class="gallery-tag hover:bg-herb hover:text-soil dark:text-white transition-colors cursor-pointer">🍵 Teas</span>
+                <span class="gallery-tag active">✨ All</span>
+                <span class="gallery-tag">🌿 Herbs</span>
+                <span class="gallery-tag">🧘 Wellness</span>
+                <span class="gallery-tag">🌸 Skincare</span>
+                <span class="gallery-tag">🌱 Nature</span>
+                <span class="gallery-tag">🍵 Teas</span>
             </div>
 
             <!-- Equal size image cards grid (6 Cards) -->
